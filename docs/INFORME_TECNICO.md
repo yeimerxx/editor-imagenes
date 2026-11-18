@@ -130,9 +130,9 @@ El desarrollo siguió las etapas que se describen a continuación.
 
 Primero se formuló la idea: un editor pequeño de imágenes, porque permite demostrar polimorfismo y abstracción de manera natural con los filtros, y porque el enunciado valora más una aplicación acotada y completa que una ambiciosa e incompleta. Luego se identificaron las funcionalidades mínimas (filtros, transformaciones y exportación) y se diseñaron las clases con sus responsabilidades.
 
-Después se construyó la lógica antes que la interfaz, empezando por los modelos (Filtro y sus derivadas, DocumentoImagen), luego el servicio EditorImagen y las pruebas con pytest. Con la lógica verificada se desarrolló la ventana de Tkinter y se integró todo desde main.py.
+Después se construyó la lógica antes que la interfaz, empezando por los modelos (`Filtro` y sus derivadas, `DocumentoImagen`), luego el servicio `EditorImagen` y las pruebas con pytest. Con la lógica verificada se desarrolló la ventana de Tkinter y se integró todo desde `main.py`.
 
-La puesta en marcha en mi equipo incluyó organizar los archivos en la estructura de carpetas del proyecto, crear el entorno virtual con Python, instalar las dependencias, ejecutar la aplicación y las 31 pruebas, y comprobar que todas pasaban. Por último se publicó el proyecto en GitHub en cinco subidas separadas (modelos, servicios, pruebas, interfaz y documentación), de modo que el historial de commits refleja las etapas del desarrollo.
+La puesta en marcha en mi equipo incluyó organizar los archivos en la estructura de carpetas del proyecto, crear el entorno virtual con Python, instalar las dependencias, ejecutar la aplicación y las 31 pruebas, y comprobar que todas pasaban. Por último se publicó el proyecto en GitHub en varias subidas separadas (modelos, servicios, pruebas, interfaz y documentación), de modo que el historial de commits refleja las etapas del desarrollo.
 
 ## 8. Pruebas
 
@@ -148,13 +148,13 @@ El proyecto incluye 31 pruebas automatizadas en la carpeta `pruebas` (comando `p
 
 ## 9. Problemas y soluciones
 
-**Problema 1: el entorno virtual no se podía activar en PowerShell.** Al ejecutar .venv\Scripts\activate apareció el error "la ejecución de scripts está deshabilitada en este sistema" (PSSecurityException, UnauthorizedAccess). El diagnóstico fue que Windows bloquea por defecto los scripts de PowerShell, entre ellos el de activación del entorno. La solución fue habilitarlos solo para esa terminal con Set-ExecutionPolicy -Scope Process Bypass, sin cambiar nada permanente del sistema. Después el entorno se activó y se pudo instalar Pillow y pytest.
+**Problema 1: el entorno virtual no se podía activar en PowerShell.** Al ejecutar `.venv\Scripts\activate` apareció el error "la ejecución de scripts está deshabilitada en este sistema" (`PSSecurityException`, `UnauthorizedAccess`). El diagnóstico fue que Windows bloquea por defecto los scripts de PowerShell, entre ellos el de activación del entorno. La solución fue habilitarlos solo para esa terminal con `Set-ExecutionPolicy -Scope Process Bypass`, sin cambiar nada permanente del sistema. Después el entorno se activó y se pudo instalar Pillow y pytest.
 
-**Problema 2: los imports de las carpetas aparecían subrayados y fallaban.** Al abrir el proyecto con todos los archivos sueltos en una sola carpeta, VS Code marcaba como error líneas como "from modelos.filtros import ...". El diagnóstico fue que las carpetas modelos, servicios, interfaz y pruebas todavía no existían o no eran paquetes de Python. La solución fue crear la estructura de carpetas, mover cada archivo a su lugar y añadir un archivo __init__.py vacío en cada carpeta para que Python las reconozca como paquetes. Con eso los imports funcionaron y las 31 pruebas pasaron.
+**Problema 2: los imports de las carpetas aparecían subrayados y fallaban.** Al abrir el proyecto con todos los archivos sueltos en una sola carpeta, VS Code marcaba como error líneas como `from modelos.filtros import ...`. El diagnóstico fue que las carpetas `modelos`, `servicios`, `interfaz` y `pruebas` todavía no existían o no eran paquetes de Python. La solución fue crear la estructura de carpetas, mover cada archivo a su lugar y añadir un archivo `__init__.py` vacío en cada carpeta para que Python las reconozca como paquetes. Con eso los imports funcionaron y las 31 pruebas pasaron.
 
-**Problema 3: la vista previa de la imagen podía desaparecer.** En Tkinter, una imagen mostrada en un Canvas se borra si el objeto PhotoImage no conserva ninguna referencia, porque el recolector de basura lo elimina. El diagnóstico fue que se creaba como variable local dentro del método de dibujo. La solución fue guardarla como atributo de la ventana (self._foto) en cada redibujado.
+**Problema 3: la vista previa de la imagen podía desaparecer.** En Tkinter, una imagen mostrada en un `Canvas` se borra si el objeto `PhotoImage` no conserva ninguna referencia, porque el recolector de basura lo elimina. El diagnóstico fue que se creaba como variable local dentro del método de dibujo. La solución fue guardarla como atributo de la ventana (`self._foto`) en cada redibujado.
 
-**Problema 4: archivos que no debían subirse al repositorio.** Al ejecutar el programa y las pruebas, Python generó carpetas __pycache__ y .pytest_cache, que no forman parte del proyecto. Como la subida desde la web de GitHub no respeta el .gitignore, se borraron esas carpetas con un comando de PowerShell antes de subir y se evitó cargar la carpeta .venv.
+**Problema 4: archivos que no debían subirse al repositorio.** Al ejecutar el programa y las pruebas, Python generó carpetas `__pycache__` y `.pytest_cache`, que no forman parte del proyecto. Como la subida desde la web de GitHub no respeta el `.gitignore`, se borraron esas carpetas con un comando de PowerShell antes de subir y se evitó cargar la carpeta `.venv`.
 
 ## 10. Conclusiones
 
