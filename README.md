@@ -111,7 +111,7 @@ editor_imagenes/
 
 1. Clona el repositorio y entra a la carpeta:
    ```
-   git clone https://github.com/TU-USUARIO/editor-imagenes.git
+   git clone https://github.com/yeimerxx/editor-imagenes.git
    cd editor-imagenes
    ```
 2. Crea y activa tu entorno virtual:
