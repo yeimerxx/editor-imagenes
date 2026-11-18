@@ -173,4 +173,4 @@ Imagen en escala de grises y rotada:
 
 ![Imagen en grises y rotada](docs/imagenes/04_grises_rotada.png)
 
-**Autor:** Yeimer Ortiz Reales. **Asignatura:** Programación II, Ingeniería de Sistemas.
+**Autor:** Yeimer Ortiz Reales. **Asignatura:** Programación orientada a objetos, Ingeniería de Sistemas.
