@@ -1,6 +1,6 @@
 # Informe técnico: Editor de Imágenes POO
 
-Autor: Yeimer Ortiz Reales. Asignatura: Programación II, Ingeniería de Sistemas.
+Autor: Yeimer Ortiz Reales. Asignatura: Programación orientada a objetos, Ingeniería de Sistemas.
 
 ## 1. Análisis del problema
 
